@@ -23,7 +23,16 @@ struct rclcpp::TypeAdapter<cv::Mat, sensor_msgs::msg::Image>
 
   static void convert_to_ros_message(const custom_type & source, ros_message_type & destination)
   {
-    destination = *(cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", source).toImageMsg());
+    std::string encoding;
+    if (source.channels() == 1)
+    {
+      encoding = "mono8";  // グレースケール画像
+    }
+    else if (source.channels() == 3)
+    {
+      encoding = "bgr8";  // カラー画像
+    }
+    destination = *(cv_bridge::CvImage(std_msgs::msg::Header(), encoding, source).toImageMsg());
   }
 
   static void convert_to_custom(const ros_message_type & source, custom_type & destination)
