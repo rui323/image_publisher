@@ -1,16 +1,9 @@
 #include <iostream>
-#include <vector>
-#include <string>
 #include <memory>
-#include <chrono>
 #include <functional>
-
 #include <opencv2/opencv.hpp>
 #include "rclcpp/rclcpp.hpp"
-#include <std_msgs/msg/bool.hpp>
-#include <std_msgs/msg/string.hpp>
 #include <sensor_msgs/msg/image.hpp>
-#include <geometry_msgs/msg/point.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <rclcpp/type_adapter.hpp>
 
